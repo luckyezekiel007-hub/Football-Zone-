@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071a12">
+<title>Football Zone</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #071a12;
+  color: white;
+}
+
+header {
+  background: #0b2619;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #19c66b;
+}
+
+header h1 {
+  color: #19e779;
+  font-size: 28px;
+}
+
+header p {
+  color: #aaa;
+  margin-top: 5px;
+}
+
+.hero {
+  padding: 25px 18px;
+  background: linear-gradient(135deg, #0d4025, #071a12);
+}
+
+.hero h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #bbb;
+  line-height: 1.5;
+}
+
+.section {
+  padding: 18px;
+}
+
+.section h2 {
+  margin-bottom: 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.card {
+  background: #10291d;
+  border: 1px solid #1c5235;
+  border-radius: 15px;
+  padding: 18px 10px;
+  text-align: center;
+}
+
+.card .icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  font-size: 15px;
+}
+
+.match {
+  background: #10291d;
+  border-radius: 15px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid #19e779;
+}
+
+.match-top {
+  display: flex;
+  justify-content: space-between;
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.team {
+  width: 40%;
+  font-weight: bold;
+}
+
+.vs {
+  color: #19e779;
+  font-weight: bold;
+}
+
+.live {
+  color: #ff3b3b;
+  font-weight: bold;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0b2619;
+  border-top: 1px solid #235a3d;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 5px;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 12px;
+}
+
+nav button span {
+  display: block;
+  font-size: 21px;
+  margin-bottom: 3px;
+}
+
+nav button.active {
+  color: #19e779;
+}
+
+.content {
+  padding-bottom: 85px;
+}
+
+.hidden {
+  display: none;
+}
+
+.notice {
+  background: #3b2d0b;
+  border: 1px solid #80651b;
+  color: #f3d77a;
+  padding: 15px;
+  border-radius: 12px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚽ FOOTBALL ZONE</h1>
+  <p>Your world of football</p>
+</header>
+
+<div class="content">
+
+<section id="home">
+  <div class="hero">
+    <h2>Welcome to Football Zone</h2>
+    <p>Follow matches, teams, players, leagues and the latest football action.</p>
+  </div>
+
+  <div class="section">
+    <h2>Quick Access</h2>
+
+    <div class="cards">
+      <div class="card" onclick="showPage('matches')">
+        <div class="icon">⚽</div>
+        <h3>Matches</h3>
+      </div>
+
+      <div class="card" onclick="showPage('leagues')">
+        <div class="icon">🏆</div>
+        <h3>Leagues</h3>
+      </div>
+
+      <div class="card" onclick="showPage('players')">
+        <div class="icon">👤</div>
+        <h3>Players</h3>
+      </div>
+
+      <div class="card" onclick="showPage('news')">
+        <div class="icon">📰</div>
+        <h3>Football News</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Today's Matches</h2>
+
+    <div class="match">
+      <div class="match-top">
+        <span>Premier League</span>
+        <span>20:00</span>
+      </div>
+
+      <div class="teams">
+        <div class="team">Arsenal</div>
+        <div class="vs">VS</div>
+        <div class="team">Chelsea</div>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-top">
+        <span>La Liga</span>
+        <span>21:00</span>
+      </div>
+
+      <div class="teams">
+        <div class="team">Barcelona</div>
+        <div class="vs">VS</div>
+        <div class="team">Real Madrid</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="matches" class="hidden">
+  <div class="section">
+    <h2>⚽ Matches</h2>
+
+    <div class="match">
+      <div class="match-top">
+        <span>LIVE</span>
+        <span class="live">● LIVE</span>
+      </div>
+
+      <div class="teams">
+        <div class="team">Team A<br><br>1</div>
+        <div class="vs">VS</div>
+        <div class="team">Team B<br><br>0</div>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-top">
+        <span>Champions League</span>
+        <span>Tomorrow</span>
+      </div>
+
+      <div class="teams">
+        <div class="team">Man City</div>
+        <div class="vs">VS</div>
+        <div class="team">Bayern</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="leagues" class="hidden">
+  <div class="section">
+    <h2>🏆 Leagues</h2>
+
+    <div class="cards">
+      <div class="card">🇬🇧<br><br>Premier League</div>
+      <div class="card">🇪🇸<br><br>La Liga</div>
+      <div class="card">🇮🇹<br><br>Serie A</div>
+      <div class="card">🇩🇪<br><br>Bundesliga</div>
+      <div class="card">🇫🇷<br><br>Ligue 1</div>
+      <div class="card">🌍<br><br>Champions League</div>
+    </div>
+  </div>
+</section>
+
+
+<section id="players" class="hidden">
+  <div class="section">
+    <h2>👤 Top Players</h2>
+
+    <div class="cards">
+      <div class="card">⭐<br><br>Player 1</div>
+      <div class="card">⭐<br><br>Player 2</div>
+      <div class="card">⭐<br><br>Player 3</div>
+      <div class="card">⭐<br><br>Player 4</div>
+    </div>
+  </div>
+</section>
+
+
+<section id="news" class="hidden">
+  <div class="section">
+    <h2>📰 Football News</h2>
+
+    <div class="match">
+      <h3>Latest Football Updates</h3>
+      <br>
+      <p>Football news and match updates will appear here.</p>
+    </div>
+
+    <div class="notice">
+      News and live match data will require a legitimate football-data/news API.
+    </div>
+  </div>
+</section>
+
+
+<section id="live" class="hidden">
+  <div class="section">
+    <h2>📺 Live Football</h2>
+
+    <div class="notice">
+      Live broadcasts can only be provided when you have permission or an authorized streaming source.
+    </div>
+  </div>
+</section>
+
+
+<section id="betting" class="hidden">
+  <div class="section">
+    <h2>🎲 Betting</h2>
+
+    <div class="notice">
+      Betting features must comply with applicable laws, licensing requirements and age restrictions. Gamble responsibly.
+    </div>
+  </div>
+</section>
+
+</div>
+
+
+<nav>
+  <button class="active" onclick="showPage('home')">
+    <span>🏠</span>Home
+  </button>
+
+  <button onclick="showPage('matches')">
+    <span>⚽</span>Matches
+  </button>
+
+  <button onclick="showPage('live')">
+    <span>📺</span>Live
+  </button>
+
+  <button onclick="showPage('leagues')">
+    <span>🏆</span>Leagues
+  </button>
+
+  <button onclick="showPage('betting')">
+    <span>🎲</span>Betting
+  </button>
+</nav>
+
+
+<script>
+function showPage(page) {
+
+  const pages = [
+    "home",
+    "matches",
+    "leagues",
+    "players",
+    "news",
+    "live",
+    "betting"
+  ];
+
+  pages.forEach(function(p) {
+    document.getElementById(p).classList.add("hidden");
+  });
+
+  document.getElementById(page).classList.remove("hidden");
+
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+  </html>
