@@ -1,0 +1,47 @@
+name: Update Football Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-football-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository
+        uses: actions/checkout@v4
+
+      - name: Get real football data
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: |
+          mkdir -p data
+
+          FROM=$(date -u -d "7 days ago" +%Y-%m-%d)
+          TO=$(date -u -d "14 days" +%Y-%m-%d)
+
+          curl --fail \
+            -H "X-Auth-Token: $FOOTBALL_DATA_TOKEN" \
+            "https://api.football-data.org/v4/competitions/PL/matches?dateFrom=$FROM&dateTo=$TO" \
+            -o data/matches.json
+
+          echo "Football data updated successfully."
+
+      - name: Save updated data
+        run: |
+          git config user.name "Football Zone Bot"
+          git config user.email "actions@github.com"
+
+          git add data/matches.json
+
+          if git diff --cached --quiet; then
+            echo "No football data changes."
+          else
+            git commit -m "Update football matches"
+            git push
+          fi
