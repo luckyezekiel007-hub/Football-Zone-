@@ -3,168 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071a12">
+<meta name="theme-color" content="#0757b5">
 <title>Football Zone</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f5f7fb;color:#14213d}
+header{
+  background:linear-gradient(135deg,#0757b5,#078a4b);
+  color:white;padding:22px 18px 28px;
+  border-bottom-left-radius:26px;border-bottom-right-radius:26px
+}
+.logo{display:flex;align-items:center;gap:10px}
+.ball{font-size:34px}
+.logo h1{font-size:25px}
+.logo span{color:#ffd21f}
+.subtitle{margin-top:8px;color:#e9f5ff}
+.section{padding:20px 16px}
+.title-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.title-row h2{font-size:20px}
+.badge{background:#ffd21f;color:#14213d;padding:6px 10px;border-radius:20px;font-size:12px;font-weight:bold}
+
+.quick{
+display:grid;grid-template-columns:repeat(2,1fr);gap:12px
+}
+.quick-card{
+background:white;border-radius:18px;padding:18px 12px;
+box-shadow:0 4px 14px #00000012;border:1px solid #e5eaf2;
+cursor:pointer
+}
+.quick-card:nth-child(1){border-top:4px solid #e21d2e}
+.quick-card:nth-child(2){border-top:4px solid #078a4b}
+.quick-card:nth-child(3){border-top:4px solid #ffd21f}
+.quick-card:nth-child(4){border-top:4px solid #0757b5}
+.icon{font-size:30px;margin-bottom:8px}
+.quick-card h3{font-size:15px}
+.quick-card p{font-size:12px;color:#788397;margin-top:4px}
+
+.match{
+background:white;border-radius:18px;padding:16px;
+margin-bottom:12px;border:1px solid #e5eaf2;
+box-shadow:0 3px 12px #0000000d
+}
+.match-top{display:flex;justify-content:space-between;color:#718096;font-size:12px;margin-bottom:15px}
+.teams{display:flex;align-items:center;justify-content:space-between;text-align:center}
+.team{width:38%;font-weight:bold}
+.vs{font-weight:bold;color:#0757b5}
+.result{font-size:24px;color:#078a4b;font-weight:bold}
+
+.league-grid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:12px
+}
+.league{
+background:white;padding:18px;border-radius:16px;
+border:1px solid #e5eaf2;font-weight:bold
+}
+.league small{display:block;color:#7b8794;margin-top:5px;font-weight:normal}
+
+.player{
+display:flex;align-items:center;gap:14px;background:white;
+padding:14px;border-radius:16px;margin-bottom:10px;
+border-left:5px solid #0757b5
+}
+.avatar{
+width:48px;height:48px;border-radius:50%;
+background:linear-gradient(135deg,#e21d2e,#0757b5);
+display:flex;align-items:center;justify-content:center;color:white;font-size:22px
+}
+.player small{color:#788397}
+
+.news{
+background:white;border-radius:16px;padding:16px;margin-bottom:12px;
+border-left:5px solid #078a4b
+}
+.news h3{font-size:15px}
+.news p{color:#687386;font-size:13px;margin-top:7px;line-height:1.5}
+
+.notice{
+background:#fff8d9;border:1px solid #f1d36b;
+padding:14px;border-radius:14px;color:#695400;
+font-size:13px;line-height:1.5
 }
 
-body {
-  background: #071a12;
-  color: white;
-}
+.page{display:none}
+.page.active{display:block}
 
-header {
-  background: #0b2619;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #19c66b;
+nav{
+position:fixed;bottom:0;left:0;right:0;background:white;
+border-top:1px solid #e5eaf2;display:flex;
+justify-content:space-around;padding:9px 3px;z-index:10
 }
-
-header h1 {
-  color: #19e779;
-  font-size: 28px;
+nav button{
+border:0;background:none;color:#7b8794;font-size:11px
 }
+nav button span{display:block;font-size:21px;margin-bottom:3px}
+nav button.active{color:#0757b5;font-weight:bold}
 
-header p {
-  color: #aaa;
-  margin-top: 5px;
-}
+main{padding-bottom:85px}
+footer{text-align:center;padding:20px;color:#8a94a6;font-size:11px}
 
-.hero {
-  padding: 25px 18px;
-  background: linear-gradient(135deg, #0d4025, #071a12);
-}
-
-.hero h2 {
-  font-size: 25px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  color: #bbb;
-  line-height: 1.5;
-}
-
-.section {
-  padding: 18px;
-}
-
-.section h2 {
-  margin-bottom: 14px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.card {
-  background: #10291d;
-  border: 1px solid #1c5235;
-  border-radius: 15px;
-  padding: 18px 10px;
-  text-align: center;
-}
-
-.card .icon {
-  font-size: 30px;
-  margin-bottom: 8px;
-}
-
-.card h3 {
-  font-size: 15px;
-}
-
-.match {
-  background: #10291d;
-  border-radius: 15px;
-  padding: 16px;
-  margin-bottom: 12px;
-  border-left: 4px solid #19e779;
-}
-
-.match-top {
-  display: flex;
-  justify-content: space-between;
-  color: #aaa;
-  font-size: 13px;
-  margin-bottom: 12px;
-}
-
-.teams {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-}
-
-.team {
-  width: 40%;
-  font-weight: bold;
-}
-
-.vs {
-  color: #19e779;
-  font-weight: bold;
-}
-
-.live {
-  color: #ff3b3b;
-  font-weight: bold;
-}
-
-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #0b2619;
-  border-top: 1px solid #235a3d;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 5px;
-}
-
-nav button {
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 12px;
-}
-
-nav button span {
-  display: block;
-  font-size: 21px;
-  margin-bottom: 3px;
-}
-
-nav button.active {
-  color: #19e779;
-}
-
-.content {
-  padding-bottom: 85px;
-}
-
-.hidden {
-  display: none;
-}
-
-.notice {
-  background: #3b2d0b;
-  border: 1px solid #80651b;
-  color: #f3d77a;
-  padding: 15px;
-  border-radius: 12px;
-  line-height: 1.5;
-  margin-top: 12px;
+@media(min-width:700px){
+.section{max-width:800px;margin:auto}
+.quick{grid-template-columns:repeat(4,1fr)}
+.league-grid{grid-template-columns:repeat(3,1fr)}
 }
 </style>
 </head>
@@ -172,225 +113,241 @@ nav button.active {
 <body>
 
 <header>
-  <h1>⚽ FOOTBALL ZONE</h1>
-  <p>Your world of football</p>
+  <div class="logo">
+    <div class="ball">⚽</div>
+    <h1>FOOTBALL <span>ZONE</span></h1>
+  </div>
+  <p class="subtitle">Your football world in one place</p>
 </header>
 
-<div class="content">
+<main>
 
-<section id="home">
-  <div class="hero">
-    <h2>Welcome to Football Zone</h2>
-    <p>Follow matches, teams, players, leagues and the latest football action.</p>
-  </div>
+<!-- HOME -->
+<section id="home" class="page active">
 
-  <div class="section">
-    <h2>Quick Access</h2>
+<div class="section">
+<div class="title-row">
+<h2>Welcome 👋</h2>
+<span class="badge">FOOTBALL</span>
+</div>
 
-    <div class="cards">
-      <div class="card" onclick="showPage('matches')">
-        <div class="icon">⚽</div>
-        <h3>Matches</h3>
-      </div>
+<div class="notice">
+Football Zone will bring you football fixtures, results, leagues, players and news.
+</div>
+</div>
 
-      <div class="card" onclick="showPage('leagues')">
-        <div class="icon">🏆</div>
-        <h3>Leagues</h3>
-      </div>
+<div class="section">
+<div class="title-row">
+<h2>Explore</h2>
+</div>
 
-      <div class="card" onclick="showPage('players')">
-        <div class="icon">👤</div>
-        <h3>Players</h3>
-      </div>
+<div class="quick">
 
-      <div class="card" onclick="showPage('news')">
-        <div class="icon">📰</div>
-        <h3>Football News</h3>
-      </div>
-    </div>
-  </div>
+<div class="quick-card" onclick="showPage('matches')">
+<div class="icon">⚽</div>
+<h3>Matches</h3>
+<p>Fixtures & results</p>
+</div>
 
-  <div class="section">
-    <h2>Today's Matches</h2>
+<div class="quick-card" onclick="showPage('leagues')">
+<div class="icon">🏆</div>
+<h3>Leagues</h3>
+<p>Competition tables</p>
+</div>
 
-    <div class="match">
-      <div class="match-top">
-        <span>Premier League</span>
-        <span>20:00</span>
-      </div>
+<div class="quick-card" onclick="showPage('players')">
+<div class="icon">👤</div>
+<h3>Players</h3>
+<p>Player information</p>
+</div>
 
-      <div class="teams">
-        <div class="team">Arsenal</div>
-        <div class="vs">VS</div>
-        <div class="team">Chelsea</div>
-      </div>
-    </div>
-
-    <div class="match">
-      <div class="match-top">
-        <span>La Liga</span>
-        <span>21:00</span>
-      </div>
-
-      <div class="teams">
-        <div class="team">Barcelona</div>
-        <div class="vs">VS</div>
-        <div class="team">Real Madrid</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="matches" class="hidden">
-  <div class="section">
-    <h2>⚽ Matches</h2>
-
-    <div class="match">
-      <div class="match-top">
-        <span>LIVE</span>
-        <span class="live">● LIVE</span>
-      </div>
-
-      <div class="teams">
-        <div class="team">Team A<br><br>1</div>
-        <div class="vs">VS</div>
-        <div class="team">Team B<br><br>0</div>
-      </div>
-    </div>
-
-    <div class="match">
-      <div class="match-top">
-        <span>Champions League</span>
-        <span>Tomorrow</span>
-      </div>
-
-      <div class="teams">
-        <div class="team">Man City</div>
-        <div class="vs">VS</div>
-        <div class="team">Bayern</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="leagues" class="hidden">
-  <div class="section">
-    <h2>🏆 Leagues</h2>
-
-    <div class="cards">
-      <div class="card">🇬🇧<br><br>Premier League</div>
-      <div class="card">🇪🇸<br><br>La Liga</div>
-      <div class="card">🇮🇹<br><br>Serie A</div>
-      <div class="card">🇩🇪<br><br>Bundesliga</div>
-      <div class="card">🇫🇷<br><br>Ligue 1</div>
-      <div class="card">🌍<br><br>Champions League</div>
-    </div>
-  </div>
-</section>
-
-
-<section id="players" class="hidden">
-  <div class="section">
-    <h2>👤 Top Players</h2>
-
-    <div class="cards">
-      <div class="card">⭐<br><br>Player 1</div>
-      <div class="card">⭐<br><br>Player 2</div>
-      <div class="card">⭐<br><br>Player 3</div>
-      <div class="card">⭐<br><br>Player 4</div>
-    </div>
-  </div>
-</section>
-
-
-<section id="news" class="hidden">
-  <div class="section">
-    <h2>📰 Football News</h2>
-
-    <div class="match">
-      <h3>Latest Football Updates</h3>
-      <br>
-      <p>Football news and match updates will appear here.</p>
-    </div>
-
-    <div class="notice">
-      News and live match data will require a legitimate football-data/news API.
-    </div>
-  </div>
-</section>
-
-
-<section id="live" class="hidden">
-  <div class="section">
-    <h2>📺 Live Football</h2>
-
-    <div class="notice">
-      Live broadcasts can only be provided when you have permission or an authorized streaming source.
-    </div>
-  </div>
-</section>
-
-
-<section id="betting" class="hidden">
-  <div class="section">
-    <h2>🎲 Betting</h2>
-
-    <div class="notice">
-      Betting features must comply with applicable laws, licensing requirements and age restrictions. Gamble responsibly.
-    </div>
-  </div>
-</section>
+<div class="quick-card" onclick="showPage('news')">
+<div class="icon">📰</div>
+<h3>News</h3>
+<p>Football updates</p>
+</div>
 
 </div>
+</div>
+
+<div class="section">
+<div class="title-row">
+<h2>Fixtures & Results</h2>
+</div>
+
+<div class="notice">
+Real football data will be connected here next. No sample scores are being presented as real results.
+</div>
+</div>
+
+</section>
+
+
+<!-- MATCHES -->
+<section id="matches" class="page">
+
+<div class="section">
+<div class="title-row">
+<h2>⚽ Matches</h2>
+<span class="badge">FIXTURES</span>
+</div>
+
+<div class="notice">
+We will connect this page to a real football-data service so fixtures and results come from actual competitions.
+</div>
+
+<br>
+
+<div class="match">
+<div class="match-top">
+<span>Premier League</span>
+<span>Fixture</span>
+</div>
+
+<div class="teams">
+<div class="team">Home Team</div>
+<div class="vs">VS</div>
+<div class="team">Away Team</div>
+</div>
+</div>
+
+</div>
+</section>
+
+
+<!-- LEAGUES -->
+<section id="leagues" class="page">
+
+<div class="section">
+<div class="title-row">
+<h2>🏆 Leagues</h2>
+</div>
+
+<div class="league-grid">
+
+<div class="league">🇬🇧 Premier League<small>England</small></div>
+<div class="league">🇪🇸 La Liga<small>Spain</small></div>
+<div class="league">🇮🇹 Serie A<small>Italy</small></div>
+<div class="league">🇩🇪 Bundesliga<small>Germany</small></div>
+<div class="league">🇫🇷 Ligue 1<small>France</small></div>
+<div class="league">🌍 Champions League<small>Europe</small></div>
+
+</div>
+</div>
+</section>
+
+
+<!-- PLAYERS -->
+<section id="players" class="page">
+
+<div class="section">
+<div class="title-row">
+<h2>👤 Players</h2>
+</div>
+
+<div class="player">
+<div class="avatar">⚽</div>
+<div><strong>Top Players</strong><br><small>Real player information will be connected here.</small></div>
+</div>
+
+<div class="notice">
+Player statistics will be added using a legitimate football-data source.
+</div>
+
+</div>
+</section>
+
+
+<!-- NEWS -->
+<section id="news" class="page">
+
+<div class="section">
+<div class="title-row">
+<h2>📰 Football News</h2>
+</div>
+
+<div class="news">
+<h3>Football Zone News</h3>
+<p>Latest football stories will appear here once a legitimate news source is connected.</p>
+</div>
+
+<div class="news">
+<h3>Match Updates</h3>
+<p>Fixtures, results and competition information will be displayed here.</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- FAVORITES -->
+<section id="favorites" class="page">
+
+<div class="section">
+<div class="title-row">
+<h2>⭐ Favorites</h2>
+</div>
+
+<div class="notice">
+Your favorite teams and players will appear here. Favorite-team functionality can be added in the next update.
+</div>
+
+</div>
+</section>
+
+</main>
+
+
+<footer>
+Football Zone © 2026
+</footer>
 
 
 <nav>
-  <button class="active" onclick="showPage('home')">
-    <span>🏠</span>Home
-  </button>
 
-  <button onclick="showPage('matches')">
-    <span>⚽</span>Matches
-  </button>
+<button class="active" onclick="showPage('home',this)">
+<span>🏠</span>Home
+</button>
 
-  <button onclick="showPage('live')">
-    <span>📺</span>Live
-  </button>
+<button onclick="showPage('matches',this)">
+<span>⚽</span>Matches
+</button>
 
-  <button onclick="showPage('leagues')">
-    <span>🏆</span>Leagues
-  </button>
+<button onclick="showPage('leagues',this)">
+<span>🏆</span>Leagues
+</button>
 
-  <button onclick="showPage('betting')">
-    <span>🎲</span>Betting
-  </button>
+<button onclick="showPage('players',this)">
+<span>👤</span>Players
+</button>
+
+<button onclick="showPage('news',this)">
+<span>📰</span>News
+</button>
+
 </nav>
 
 
 <script>
-function showPage(page) {
+function showPage(page,button){
 
-  const pages = [
-    "home",
-    "matches",
-    "leagues",
-    "players",
-    "news",
-    "live",
-    "betting"
-  ];
+document.querySelectorAll('.page').forEach(function(p){
+p.classList.remove('active');
+});
 
-  pages.forEach(function(p) {
-    document.getElementById(p).classList.add("hidden");
-  });
+document.getElementById(page).classList.add('active');
 
-  document.getElementById(page).classList.remove("hidden");
+document.querySelectorAll('nav button').forEach(function(b){
+b.classList.remove('active');
+});
 
-  window.scrollTo(0, 0);
+if(button){
+button.classList.add('active');
+}
+
+window.scrollTo(0,0);
 }
 </script>
 
 </body>
-  </html>
+</html>
